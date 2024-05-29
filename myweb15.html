@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Davit Beridze's personal webpage showcasing his work as an MQL5 Developer.">
+    <meta name="keywords" content="Davit Beridze, MQL5 Developer, Forex, Trading, Indicators, Expert Advisors">
+    <title>Davit Beridze - MQL5 Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .buttons button {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffce00;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .buttons button:hover, .buttons button.active {
+            background-color: #ffce00;
+            color: #333;
+        }
+        #defaultButton {
+            background-color: #ffce00;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .content h2 {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+        }
+        .content p, .contact-info li {
+            color: #fff;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            z-index: 1;
+        }
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-info li {
+            margin-bottom: 10px;
+        }
+        .contact-info a {
+            color: #ffce00;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .work-item {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .work-item h3 {
+            margin: 0 0 10px;
+        }
+        .work-item a {
+            color: #ffce00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .work-item a:hover {
+            text-decoration: underline;
+        }
+        .work-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .work-item:hover {
+            transform: scale(1.02);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .hidden {
+            display: none;
+        }
+        .slide-panel {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            position: absolute;
+            width: 80%;
+            top: 60px; /* Adjusted to align with the buttons */
+            left: 10%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        .slide-panel.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Accessibility improvements */
+        button:focus, a:focus {
+            outline: 2px solid #ffce00;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Davit Beridze - MQL5 Developer</h1>
+    </header>
+    <div class="buttons">
+        <button id="defaultButton" onclick="showSection('works')">My Work</button>
+        <button onmouseover="togglePanel('aboutPanel', true)" onmouseout="togglePanel('aboutPanel', false)" onmouseleave="keepPanelOpen('aboutPanel', false)">About Me</button>
+        <button onmouseover="togglePanel('contactPanel', true)" onmouseout="togglePanel('contactPanel', false)" onmouseleave="keepPanelOpen('contactPanel', false)">Contact</button>
+    </div>
+    <div class="container" id="works">
+        <div class="content">
+            <h2>My Works</h2>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/116784" target="_blank">MA Speedometer Dashboard</a></h3>
+                <p>MA Speedometer Dashboard is a convenient tool for tracking trends and trading in sideways markets using moving averages.</p>
+                <img src="https://c.mql5.com/31/1107/ma-speedometer-dashboard-screen-9981.PNG" alt="MA Speedometer Dashboard Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/80765" target="_blank">MFI Modern PRO</a></h3>
+                <p>MFI Modern PRO combines technical elements to provide valuable insights into market trends and entry points.</p>
+                <img src="https://c.mql5.com/31/1035/mfi-modern-pro-screen-1480.PNG" alt="MFI Modern PRO Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/61651" target="_blank">MA Speedometer</a></h3>
+                <p>The essence of the indicator is to determine the strength and speed of the price direction by determining the tilt angle of the moving average.</p>
+                <img src="https://c.mql5.com/31/582/ma-speedometer-screen-5845.jpg" alt="MA Speedometer Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/62619" target="_blank">MA Speedometer MT5</a></h3>
+                <p>The essence of the indicator is to determine the strength and speed of the price direction by determining the tilt angle of the moving average.</p>
+                <img src="https://c.mql5.com/31/572/ma-speedometer-mt5-screen-2498.jpg" alt="MA Speedometer MT5 Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/101378" target="_blank">MRA Index</a></h3>
+                <p>The MRA Index indicator is a powerful tool for market analysis. It helps traders determine the strength of a trend and possible entry and exit points.</p>
+                <img src="https://c.mql5.com/31/1035/mra-index-screen-6158.png" alt="MRA Index Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/95340" target="_blank">Laguerre Scrat</a></h3>
+                <p>Laguerre Scrat is a trading system based on 4 indicator combinations, providing stable long-term profits.</p>
+                <img src="https://c.mql5.com/31/851/laguerre-scrat-screen-5186.png" alt="Laguerre Scrat Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/67581" target="_blank">RSI Entry Points</a></h3>
+                <p>RSI Entry Points is an upgrade of the standard RSI indicator to avoid lagging, providing more exact entries.</p>
+                <img src="https://c.mql5.com/31/612/rsi-entry-points-screen-5451.PNG" alt="RSI Entry Points Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/67762" target="_blank">RSI Entry Points MT5</a></h3>
+                <p>RSI Entry Points is the upgrade of the standard RSI indicator to avoid lagging for MT5.</p>
+                <img src="https://c.mql5.com/31/614/rsi-entry-points-mt5-screen-8735.PNG" alt="RSI Entry Points MT5 Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/65652" target="_blank">Steady Ranger EA</a></h3>
+                <p>Steady Ranger EA is an advanced automated channel trading system with potential to find hundreds of profitable set files.</p>
+                <img src="https://c.mql5.com/31/598/steady-ranger-ea-screen-4356.png" alt="Steady Ranger EA Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/85472" target="_blank">Period Cross RSI</a></h3>
+                <p>Period Cross RSI shows crosses of two RSI lines with different periods, creating zones for confirmation of trading.</p>
+                <img src="https://c.mql5.com/31/769/period-cross-rsi-screen-1789.png" alt="Period Cross RSI Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/90413" target="_blank">MA Revolution</a></h3>
+                <p>MA Revolution is an upgraded version of the standard Moving Average, providing more accuracy in detecting market direction.</p>
+                <img src="https://c.mql5.com/31/809/ma-revolution-screen-9554.png" alt="MA Revolution Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/67320" target="_blank">Filtered TMA Arrows</a></h3>
+                <p>Filtered TMA Arrows is an experimental indicator showing TMA channel arrows with a volatility filter.</p>
+                <img src="https://c.mql5.com/31/613/filtered-tma-arrows-screen-8141.PNG" alt="Filtered TMA Arrows Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/69884" target="_blank">Adjustable Pin Bar</a></h3>
+                <p>Adjustable PIN BAR indicator allows searching for specific pin bars on the price chart based on custom parameters.</p>
+                <img src="https://c.mql5.com/31/632/adjustable-pin-bar-screen-7656.PNG" alt="Adjustable Pin Bar Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/108982" target="_blank">Dual Timeframe RSI</a></h3>
+                <p>The Dual Timeframe RSI indicator allows monitoring RSI readings from two different timeframes on a single chart.</p>
+                <img src="https://c.mql5.com/31/1007/dual-timeframe-rsi-screen-4872.PNG" alt="Dual Timeframe RSI Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/96835" target="_blank">Filtered TMA NRP</a></h3>
+                <p>Filtered TMA NRP provides accurate market signals based on a non-repaint TMA channel and volatility factor.</p>
+                <img src="https://c.mql5.com/31/860/filtered-tma-nrp-screen-5587.png" alt="Filtered TMA NRP Screenshot">
+            </div>
+            <div class="work-item">
+                <h3><a href="https://www.mql5.com/en/market/product/95710" target="_blank">Fiter</a></h3>
+                <p>Fiter is EMA+ATR*RSI hybrid yellow line combined with Moving average red line, cross of which gives much smoother results than two simple MA cross usage in trading.</p>
+                <img src="https://c.mql5.com/31/851/fiter-screen-3620.png" alt="Fiter Screenshot">
+            </div>
+        </div>
+    </div>
+    <div class="slide-panel" id="aboutPanel" onmouseover="keepPanelOpen('aboutPanel', true)" onmouseout="keepPanelOpen('aboutPanel', false)">
+        <div class="content" id="about">
+            <h2>About Me</h2>
+            <p>Hello. My name is Davit Beridze. I have been trading Forex since 2009, primarily offering account management services. I have managed both company and personal accounts.</p>
+            <p>As a developer, I leverage my trading experience to enhance custom indicators, reducing lag and creating innovative new tools. My work has received positive feedback from customers. You can explore my developments on this page.</p>
+        </div>
+    </div>
+    <div class="slide-panel" id="contactPanel" onmouseover="keepPanelOpen('contactPanel', true)" onmouseout="keepPanelOpen('contactPanel', false)">
+        <div class="content" id="contact">
+            <h2>Contact</h2>
+            <ul class="contact-info">
+                <li>Email: <a href="mailto:davidcapital1@gmail.com">davidcapital1@gmail.com</a></li>
+                <li>Telegram: <a href="https://t.me/dato896" target="_blank">Contact me on Telegram</a></li>
+                <li>MQL5: <a href="https://www.mql5.com/en/users/dato1989/seller" target="_blank">Seller Profile</a></li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Davit Beridze. All rights reserved.</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.buttons button').forEach(button => button.classList.remove('active'));
+            if (sectionId === 'works') {
+                document.getElementById('defaultButton').classList.add('active');
+            }
+        }
+
+        function togglePanel(panelId, show) {
+            const panel = document.getElementById(panelId);
+            if (show) {
+                panel.classList.add('visible');
+            } else {
+                panel.classList.remove('visible');
+            }
+        }
+
+        function keepPanelOpen(panelId, keepOpen) {
+            const panel = document.getElementById(panelId);
+            if (keepOpen) {
+                panel.classList.add('visible');
+            } else {
+                panel.classList.remove('visible');
+            }
+        }
+
+        // Initialize by showing the "My Work" section
+        showSection('works');
+    </script>
+</body>
+</html>
